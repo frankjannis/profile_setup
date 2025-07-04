@@ -1,4 +1,4 @@
-use std::{env::args, io::Write, path::{Path, PathBuf}};
+use std::{io::Write, path::Path};
 
 fn main() {
     println!("Starting Profile Setup");
@@ -31,9 +31,8 @@ fn main() {
 
     let install_file = std::fs::read_to_string("install.txt").unwrap();
     let install = install_file.lines()
-        .map(str::trim)
+        .map(|l| remove_comment(l))
         .filter(|l| !l.is_empty())
-        .filter(|l| !l.starts_with('#'))
         .collect::<Vec<_>>();
     println!("Installing: {install:#?}");
     ask_confirmation();
@@ -47,9 +46,8 @@ fn main() {
 
     let cloning_file = std::fs::read_to_string("clone.txt").unwrap();
     let cloning = cloning_file.lines()
-        .map(str::trim)
+        .map(|l| remove_comment(l))
         .filter(|l| !l.is_empty())
-        .filter(|l| !l.starts_with('#'))
         .map(|l| l.split_once(' ').unwrap())
         .map(|(u, t)| (u.trim(), t.trim()))
         .map(|(u, t)| (u, if t.starts_with("~/") {home.join(&t[2..])} else {t.into()}))
@@ -92,6 +90,13 @@ fn ask_confirmation() {
     std::process::exit(0);
 }
 
+fn remove_comment(s: &str) -> &str {
+    match s.find('#') {
+        Some(i) => &s[..i],
+        None => s,
+    }.trim()
+}
+
 const FAILURE: &str = r"
 -------------------------------------------------
 -------------------------------------------------
@@ -107,4 +112,19 @@ fn handle_exit_status(s: std::process::ExitStatus) {
         println!("{FAILURE}");
         ask_confirmation();
     };
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn remove_comment_test() {
+        let line = r"   #   # asd ## s";
+        assert!(remove_comment(line).is_empty());
+        let line = r"#   # asd ## s";
+        assert!(remove_comment(line).is_empty());
+        let line = r" abc #   # asd ## s";
+        assert_eq!(remove_comment(line), "abc");
+    }
 }

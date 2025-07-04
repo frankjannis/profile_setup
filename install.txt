@@ -5,6 +5,7 @@ swaybg
 swaylock
 
 alakritty
+ueberzug # image previews
 helix
 yazi
 zoxide
