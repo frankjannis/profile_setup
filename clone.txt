@@ -1,0 +1,8 @@
+https://github.com/frankjannis/alacritty.git ~/.config/alacritty
+https://github.com/frankjannis/fish.git ~/.config/fish
+https://github.com/frankjannis/helix.git ~/.config/helix
+
+https://github.com/frankjannis/sway.git ~/.config/sway
+https://github.com/frankjannis/waybar.git ~/.config/waybar
+
+https://github.com/frankjannis/mpv.git ~/.config/mpv

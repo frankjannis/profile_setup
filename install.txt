@@ -1,0 +1,16 @@
+# sway stuff
+sway
+otf-font-awesome
+swaybg
+swaylock
+
+alakritty
+helix
+yazi
+zoxide
+
+firefox
+keepassxc
+mpv
+rust
+rust-analyzer
