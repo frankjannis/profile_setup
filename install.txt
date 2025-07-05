@@ -5,10 +5,11 @@ swaybg
 swaylock
 
 alakritty
-ueberzug # image previews
+fzf
+zoxide
 helix
 yazi
-zoxide
+ueberzug # image previews
 
 firefox
 keepassxc
