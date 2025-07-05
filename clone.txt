@@ -1,4 +1,5 @@
 https://github.com/frankjannis/alacritty.git ~/.config/alacritty
+https://github.com/frankjannis/kitty.git ~/.config/kitty
 https://github.com/frankjannis/fish.git ~/.config/fish
 https://github.com/frankjannis/helix.git ~/.config/helix
 

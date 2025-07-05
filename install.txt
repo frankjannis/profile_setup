@@ -4,12 +4,13 @@ otf-font-awesome
 swaybg
 swaylock
 
-alakritty
+# terminal stuff
+kitty
+fish
+helix
 fzf
 zoxide
-helix
 yazi
-ueberzug # image previews
 
 firefox
 keepassxc
