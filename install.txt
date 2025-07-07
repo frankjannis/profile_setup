@@ -8,6 +8,7 @@ swaylock
 kitty
 fish
 helix
+lazygit
 fzf
 zoxide
 yazi
