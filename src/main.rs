@@ -72,6 +72,12 @@ fn main() {
                 .arg(target)
                 .status().unwrap();
             handle_exit_status(output);
+            let output = std::process::Command::new("chown")
+                .arg("-R")
+                .arg("jannis:jannis")
+                .arg(target)
+                .status().unwrap();
+            handle_exit_status(output);
         }
     });
 
