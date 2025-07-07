@@ -3,6 +3,7 @@ sway
 otf-font-awesome
 swaybg
 swaylock
+sddm
 
 # terminal stuff
 kitty

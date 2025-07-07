@@ -110,6 +110,23 @@ fn main() {
         .arg("-a")
         .status().unwrap();
     handle_exit_status(output);
+
+
+    println!("Setting up autologin");
+    ask_confirmation();
+    let output = std::process::Command::new("mkdir")
+        .arg("-p")
+        .arg("/etc/sddm.conf.d")
+        .status().unwrap();
+    handle_exit_status(output);
+    let mut autologin_conf = std::fs::File::create("/etc/sddm.conf.d/autologin.conf").unwrap();
+    writeln!(autologin_conf, "[Autologin]\nUser=jannis\nSession=sway\n").unwrap();
+    let output = std::process::Command::new("systemctrl")
+        .arg("--force")
+        .arg("enable")
+        .arg("sddm.service")
+        .status().unwrap();
+    handle_exit_status(output);
 }
 
 fn ask_confirmation() {
