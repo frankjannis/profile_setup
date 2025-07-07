@@ -102,7 +102,14 @@ fn main() {
         for share in [
             "video",
             "dropboxReadOnly",
+            "jannis",
+            "tmp",
         ] {
+            let output = std::process::Command::new("mkdir")
+                .arg("-p")
+                .arg(Path::new("/mnt/truenas/").join(share))
+                .status().unwrap();
+            handle_exit_status(output);
             writeln!(fstab, "//172.16.97.200/{share} /mnt/truenas/{share} cifs credentials={},iocharset=utf8,uid=1000,gid=1000,file_mode=0777,dir_mode=0777,nofail 0 0", samba_credentials_path.display()).unwrap();
         };
         let output = std::process::Command::new("helix")
