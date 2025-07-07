@@ -13,6 +13,9 @@ fzf
 zoxide
 yazi
 
+# samba
+cifs-utils
+
 firefox
 keepassxc
 mpv
